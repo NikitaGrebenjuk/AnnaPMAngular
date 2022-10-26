@@ -1,1 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    padding: 5% 10%;
+    background-color: #EDEDED;
+}
+div{
+    background-color: #D8D9CF;
+    border-radius: 10px;
+}
+a, input{
+    text-decoration: none;
+    color:inherit;
+    font-weight: bolder;
+}
+a:hover{
+    color:#FF8787;
+}
+body>*{
+    font-size: 2em;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    color: #E26868;
+}
+.centerform{
+    width: auto;
+    margin:auto;
+}
+
+.firstp{
+    margin: auto;
+    padding: 2% 5%;
+}
+input[type=submit]{
+    background-color: #E26868;
+    color: #D8D9CF;
+    border-color: #FF8787;
+}
+input[type=submit]:focus, input:hover{
+    background-color: #FF8787;
+    color: #EDEDED;
+    border-color: #E26868;
+}
+label{
+    text-align: end;
+}
+
+td{
+    margin: auto;
+    padding: 1%;
+}
+
+.buttons:hover {
+    background-color: #FF8787;
+    color: #EDEDED;
+}
+
+.buttons {
+    background-color: #E26868;
+    color: #D8D9CF;
+    font-weight: bold;
+    border-radius: 10px;
+    margin: 1%;
+}
