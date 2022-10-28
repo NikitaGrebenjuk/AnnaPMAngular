@@ -1,25 +1,26 @@
 export class Client{
-  fname: string;
+  fname: string ;
   lname: string;
   email: string;
   phone: string;
   project: string;
 
   constructor(
-    fname: string ="",
-    lname: string ="",
-    email: string ="",
-    phone: string ="",
-    project: string ="") {
-      this.fname=fname;
-      this.lname=lname;
-      this.email=email;
-      this.phone=phone;
-      this.project=project;
+    fname: string = "",
+    lname: string = "",
+    email: string = "",
+    phone: string = "",
+    project: string = ""
+   ) {
+      this.fname=fname!;
+      this.lname=lname!;
+      this.email=email!;
+      this.phone=phone!;
+      this.project=project!;
   }
 
-  validateInput(client:Client):boolean {
-    if (client.fname != null && client.lname != null && client.email != null){
+  validateInput():boolean {
+    if (this.fname != null && this.lname != null && this.email != null){
         return true;
     } else {
         return false;
@@ -54,14 +55,15 @@ export class Client{
       }
   }
 
-  check() {
-      if(this.validateInput(this)){ // checking if requierd inputs are not empty
+  validateClient(): boolean {
+      if(this.validateInput()){ // checking if requierd inputs are not empty
           if(this.checkEmail(this.email) && this.emailExists(this.email) && this.checkNumbers(this.fname) && this.checkNumbers(this.lname)){
-              window.localStorage.setItem(this.email,JSON.stringify(this));
-              alert("client created: " +JSON.stringify(this));
-          } else {
-              alert("no client was created");
-          }
+//              window.localStorage.setItem(this.email,JSON.stringify(this));
+//              alert("client created: " +JSON.stringify(this));
+            return true;
+          } 
       }
+      alert("no client created");
+      return false;
   }
 }

@@ -32,21 +32,17 @@ export class Meeting{
   // }
 
   validateInput():boolean {
-      if (this.stime != "" && this.date != "" && this.email != ""){
+      if (this.stime != "" && this.date != null && this.client.email != ""){
           return true;
       } else {
-          alert("invalid input");
+          alert("invalid input" + this.client.email.toString());
           return false;
       }
   }
 
   checkDate() {
-      const today2 = new Date();
-      const meetingDate = new Date(this.date + "T" + this.stime + ":00.000Z");
-      alert(meetingDate + "\n" + today2);
-
-
-      if(meetingDate>=today2){
+      const today = new Date();
+      if(this.date>=today){
           return true;
       } else{
           alert("chosen date is in the past");
@@ -74,16 +70,16 @@ export class Meeting{
       }
   }
 
-  check() {
+  validateMeeting():boolean {
       if(this.validateInput()){ // checking if requierd inputs are not empty
           if( this.checkDate() && this.checkEmail() && this.emailExists()){
               let meetingID = this.client.email + this.date + this.stime;
-              window.localStorage.setItem(meetingID, JSON.stringify(this));
-              alert("meeting created: " + JSON.stringify(this));
+              return true;
           } else {
               alert("no meeting was created");
-          }
+          }    
       }
+      return false;
   }
 
 

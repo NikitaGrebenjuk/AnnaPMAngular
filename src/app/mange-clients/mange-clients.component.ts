@@ -10,19 +10,49 @@ import { Client } from '../moduls/client';
 export class MangeClientsComponent implements OnInit {
 
   clientsForm = new FormGroup({
-    fname: new FormControl("test"),
-    lname: new FormControl("test"),
-    email: new FormControl("test"),
-    phone: new FormControl("test"),
-    project: new FormControl("test")}
-  );
+    fname: new FormControl("Max"),
+    lname: new FormControl("Mustermann"),
+    email: new FormControl("max@mustermann.de"),
+    phone: new FormControl("+33 123 3123 132"),
+    project: new FormControl("first PRoject")
+  } );
+
+  deletClientForm = new FormGroup({
+    email: new FormControl("max@mustermann.de")
+  } );
+ 
+
+  result : object = {};
+  client : Object = {};
 
   constructor() { }
 
   ngOnInit(): void {
   }
+  
   addClients():void{
-
+    var client = new Client(
+      this.clientsForm.value.fname!,
+      this.clientsForm.value.lname!,
+      this.clientsForm.value.email!,
+      this.clientsForm.value.phone!,
+      this.clientsForm.value.project!
+    );
+    if(client.validateClient()){
+      this.result = client;
+      window.localStorage.setItem(client.email,JSON.stringify(client));
+    }
   }
 
+  deletClient():void{
+    var client = JSON.parse(window.localStorage.getItem(this.deletClientForm.value.email!)!);
+    this.client = new Client(client.fname,client.lname,client.email,client.phone,client.project);
+    alert(this.client);    
+    if(window.localStorage.getItem("meeting " + client.lname)!){
+      alert("There is meeting with this client. Please cancel it first.")
+    } else {
+      window.localStorage.removeItem(client.email);
+      alert("client removed")
+    } 
+  }
 }

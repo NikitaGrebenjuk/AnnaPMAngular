@@ -1,34 +1,38 @@
 <h3>reactive Form</h3>
-<div >
+<div class="float-start" >
     <form [formGroup]="clientsForm" (ngSubmit)="addClients()">
-        <p>Product ID:</p>
-        <input type="text" id="clientFname" placeholder="eg: 999" formControlName="fname" >
+        <p>clients first name:</p>
+        <input type="text" id="clientFname"  formControlName="fname" >
         <br>
-        <p>Product Name:</p>
-        <input type="text" id="clientLname" placeholder="eg: Chees" formControlName="lname" >
+        <p>clients lastname:</p>
+        <input type="text" id="clientLname"  formControlName="lname" >
         <br>
-        <p>Product Price:</p>
-        <input type="text" id="clientEmail" placeholder="eg: 3€" formControlName="email" >
+        <p>clients email:</p>
+        <input type="text" id="clientEmail"  formControlName="email" >
         <br>
-        <p>Product Rankings:</p>
-        <input type="text" id="clientPhone" placeholder="eg: 3,5" formControlName="phone" >
+        <p>Clients phone number:</p>
+        <input type="text" id="clientPhone"  formControlName="phone" >
         <br>
-        <br>
-        <p>Product Rankings:</p>
-        <input type="text" id="clientProject" placeholder="eg: 3,5" formControlName="project" >
-        <br>
-        <br>
+        <p>realated PRoject:</p>
+        <input type="text" id="clientProject"  formControlName="project" >
         <!-- <select formControlname="category">
             <option [ngValue]="null" disabled>Select </option>
             <option *ngFor="let category of categories" [ngValue]="category.title">{{category.title}}</option>
         </select> -->
         <br>
-        <br>
-        <button class="btn btn-primary" type="submit">ADD Product </button>
-        <br>
+        <button class="btn btn-primary" type="submit">add user </button>
     </form>
-    <br>
 </div>
-
-<h3>FORM DATA</h3>
-<p>{{clientsForm.value | json}}</p>
+<div class="float-end">
+    <form [formGroup]="deletClientForm" (ngSubmit)="deletClient()">
+        <p>clients email :</p>
+        <input type="text" id="emailToDelet"  formControlName="email" >
+        <br>
+        <button class="btn btn-primary" type="submit">delet client </button>
+    </form>
+</div>
+<div class="text-break">
+    <h3>FORM DATA</h3>
+    <p>{{result | json}}</p>
+    <p>{{client | json}}</p>
+</div>

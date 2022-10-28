@@ -7,9 +7,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  keys : string[] =[];
+  clients : string[] = [];
+  meetings : string[] = [];
 
-  ngOnInit(): void {
+  constructor() { 
+    
   }
 
+  ngOnInit(): void {
+
+  }
+
+  showItems(): void{
+    this.keys = Object.keys(window.localStorage);
+
+    for (let key of this.keys){
+      if(key.includes("@")){
+        this.clients.push(JSON.parse(window.localStorage.getItem(key)!));
+      } else if(key.includes("meeting")){
+        this.meetings.push(JSON.parse(window.localStorage.getItem(key)!));
+      }
+    }
+
+  }
 }

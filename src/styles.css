@@ -44,8 +44,10 @@ label{
     text-align: end;
 }
 
-td{
-    margin: auto;
+td, th{
+    border-width: 1px;
+    border-color: #FF8787;
+    font-size: smaller;
     padding: 1%;
 }
 

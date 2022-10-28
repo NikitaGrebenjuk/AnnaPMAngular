@@ -1,1 +1,28 @@
-<p>dashboard works!</p>
+<button class="btn btn-primary" type="" (click)="showItems()">show Items </button>
+
+<h3>Clients</h3>
+<table>
+    <thead ngClass="">
+        <th>Last name</th>
+        <th>email</th>
+        <th>project</th>
+    </thead>
+    <tr ngClass="" *ngFor="let client of clients">
+        <td>{{client.lname }} </td>
+        <td>{{client["email"]}} </td>
+        <td>{{client.project}} </td>
+    </tr>
+</table>
+<h3>Meetings</h3>
+<table>
+    <thead ngClass="">
+        <th>Date</th>
+        <th>Client</th>
+        <th>project</th>
+    </thead>
+    <tr ngClass="" *ngFor="let meeting of meetings">
+        <td>{{meeting.date! }} </td>
+        <td>{{meeting.client.email!}} </td>
+        <td>{{meeting.project!}} </td>
+    </tr>
+</table>

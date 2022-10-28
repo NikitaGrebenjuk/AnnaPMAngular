@@ -1,1 +1,30 @@
-<p>manage-meetings works!</p>
+<h3>reactive Form for Meetings</h3>
+<div >
+    <form [formGroup]="meetingsForm" (ngSubmit)="addMeeting()">
+        <p>meetings date:</p>
+        <input type="date" id="meetingDate"  formControlName="date" >
+        <br>
+        <p>meetings start time:</p>
+        <input type="datetime" id="meetingStime"  formControlName="stime" >
+        <br>
+        <p>meetings end time:</p>
+        <input type="datetime" id="meetingEtime"  formControlName="etime" >
+        <br>
+        <p>meetings client´s email:</p>
+        <input type="text" id="meetingClient"  formControlName="client" >
+        <br>
+        <p>realated Project:</p>
+        <input type="text" id="meetingProject"  formControlName="project" >
+        <!-- <select formControlname="category">
+            <option [ngValue]="null" disabled>Select </option>
+            <option *ngFor="let category of categories" [ngValue]="category.title">{{category.title}}</option>
+        </select> -->
+        <br>
+        <button class="btn btn-primary" type="submit">add Meeting </button>
+        <br>
+    </form>
+    <br>
+</div>
+
+<h3>FORM DATA</h3>
+<p>{{result | json}}</p>
