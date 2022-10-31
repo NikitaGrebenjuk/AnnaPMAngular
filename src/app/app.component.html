@@ -1,9 +1,14 @@
-<div class="container">
-  <div class="row-cols-auto justify-content-center align-items-center ">
-    <div class="col-lg-3 col-sm-12 col-md-12 d-inline-flex justify-content-center "><a routerLink="manage-clients">MANAGE CLIENTS</a></div>
-    <div class="col-lg-3 col-sm-12 col-md-12 d-inline-flex justify-content-center "><a routerLink="manage-meetings">MANAGE MEETINGS</a></div>
-    <div class="col-lg-3 col-sm-12 col-md-12 d-inline-flex justify-content-center  "><a routerLink="dashboard">DASHBOARD</a></div>
-    <div class="col-lg-3 col-sm-12 col-md-12 d-inline-flex justify-content-center  "><a routerLink="">HOME</a></div>
-  </div>
-</div>
+  <ul ngbNav #nav="ngbNav" class="nav-tabs">
+      <li ngbNavItem>
+        <a ngbNavLink routerLink="manage-clients">MANAGE CLIENTS</a>
+      </li>
+      <li ngbNavItem>
+        <a ngbNavLink routerLink="manage-meetings">MANAGE MEETINGS</a>
+      </li>
+      <li ngbNavItem>
+        <a ngbNavLink routerLink="dashboard">DASHBOARD</a>
+      </li>
+  </ul>
+
+<div [ngbNavOutlet]="nav">Home</div>
 <router-outlet></router-outlet>

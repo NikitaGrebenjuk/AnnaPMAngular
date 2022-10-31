@@ -43,20 +43,23 @@ input[type=submit]:focus, input:hover{
 label{
     text-align: end;
 }
-
+*/
 td, th{
-    border-width: 1px;
-    border-color: #FF8787;
-    font-size: smaller;
-    padding: 1%;
+    font-size: 0.8em;
+    padding: 5px;
+    margin: auto;
+}
+.width100, input {
+  width: 80%;
+  margin:auto;
 }
 
-.buttons:hover {
+.button:hover {
     background-color: #FF8787;
     color: #EDEDED;
-} */
+}
 
-.buttons {
+.button {
     background-color: #E26868;
     color: #D8D9CF;
     font-weight: bold;

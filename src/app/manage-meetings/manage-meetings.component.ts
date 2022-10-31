@@ -31,23 +31,22 @@ export class ManageMeetingsComponent implements OnInit {
   }
 
   addMeeting():void{
-      if(Client.emailExists(this.meetingsForm.value.email!)){
-        var client = JSON.parse(window.localStorage.getItem(this.meetingsForm.value.email!)!);
-        alert(JSON.stringify(client));
-        var meeting = new Meeting(
-            new Date(this.meetingsForm.value.date!),
-            this.meetingsForm.value.stime!,
-            this.meetingsForm.value.etime!,
-            new Client(client.fname!, client.lname!, client.email!, client.phone!, client.project!),
-            this.meetingsForm.value.project!
-          );
-          if(meeting.validateMeeting() && meeting.client.emailExists()){
-            this.result = meeting;
-            window.localStorage.setItem("meeting " + meeting.client.email + " " + meeting.date.toDateString(),JSON.stringify(meeting));
-            alert("meeting created :\n" + JSON.stringify(meeting));
-          } else{
-            alert ("no meeting created: validation failed")
-          }
+    if(Client.emailExists(this.meetingsForm.value.email!)){
+      var client = JSON.parse(window.localStorage.getItem(this.meetingsForm.value.email!)!);
+      var meeting = new Meeting(
+          new Date(this.meetingsForm.value.date!),
+          this.meetingsForm.value.stime!,
+          this.meetingsForm.value.etime!,
+          new Client(client.fname!, client.lname!, client.email!, client.phone!, client.project!),
+          this.meetingsForm.value.project!
+        );
+        if(meeting.validateMeeting()){
+          this.result = meeting;
+          window.localStorage.setItem("meeting " + meeting.client.email + " " + meeting.date.toDateString(),JSON.stringify(meeting));
+          alert("meeting created");
+        } else{
+          alert ("no meeting created: validation failed")
+        }
     } else {
       alert ("no meeting created: no client with given email exists")
     }
@@ -56,16 +55,20 @@ export class ManageMeetingsComponent implements OnInit {
   deleteMeeting():void{
     var email = this.deleteMeetingForm.value.email!;
     if(Client.emailExists(email)){
-      if(window.localStorage.getItem("meeting " + email)!){
-        var meeting = JSON.parse(window.localStorage.getItem("meeting " + this.deleteMeetingForm.value.email!)!);
-        this.meeting = new Meeting(meeting.date,meeting.stime,meeting.etime,meeting.client,meeting.project);
-        window.localStorage.removeItem("meeting " + meeting.client.email);
-        alert("meeting removed")
-      } else {
-        alert("There is  no meeting with this client.")
+      var keys = [];
+      for(var  key of Object.keys(window.localStorage)){
+        if(key.includes("meeting " + email)){
+          keys.push(key);
+        }
       }
-    } else{
-      alert("no client with given Email");
-    }
+      if(keys.length>0){
+        for(var key of keys){
+          window.localStorage.removeItem(key);
+        }
+        alert(keys.length + " meetings deleted");
+      } else{
+        alert("no meetings with this client");
+      }
+   }
   }
 }

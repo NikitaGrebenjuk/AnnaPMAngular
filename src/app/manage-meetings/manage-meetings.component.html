@@ -1,38 +1,44 @@
-<h3>reactive Form for Meetings</h3>
-<div class="float-start">
-    <form [formGroup]="meetingsForm" (ngSubmit)="addMeeting()">
-        <p>meetings date:</p>
-        <input type="date" id="meetingDate"  formControlName="date" >
-        <br>
-        <p>meetings start time:</p>
-        <input type="datetime" id="meetingStime"  formControlName="stime" >
-        <br>
-        <p>meetings end time:</p>
-        <input type="datetime" id="meetingEtime"  formControlName="etime" >
-        <br>
-        <p>meetings client´s email:</p>
-        <input type="text" id="meetingClient"  formControlName="email" >
-        <br>
-        <p>realated Project:</p>
-        <input type="text" id="meetingProject"  formControlName="project" >
-        <!-- <select formControlname="category">
-            <option [ngValue]="null" disabled>Select </option>
-            <option *ngFor="let category of categories" [ngValue]="category.title">{{category.title}}</option>
-        </select> -->
-        <br>
-        <button class="btn btn-primary" type="submit">add Meeting </button>
-        <br>
-    </form>
-    <br>
-</div>
-<div class="float-end">
-  <form [formGroup]="deleteMeetingForm" (ngSubmit)="deleteMeeting()">
-      <p>clients email :</p>
-      <input type="text" id="emailToDelet"  formControlName="email" >
+<div class="float-start container">
+  <h3>reactive Form for Meetings</h3>
+  <div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <form [formGroup]="meetingsForm" (ngSubmit)="addMeeting()">
+          <p>meetings date:</p>
+          <input type="date" id="meetingDate"  formControlName="date" >
+          <br>
+          <p>meetings start time:</p>
+          <input type="datetime" id="meetingStime"  formControlName="stime" >
+          <br>
+          <p>meetings end time:</p>
+          <input type="datetime" id="meetingEtime"  formControlName="etime" >
+          <br>
+          <p>meetings client´s email:</p>
+          <input type="text" id="meetingClient"  formControlName="email" >
+          <br>
+          <p>realated Project:</p>
+          <input type="text" id="meetingProject"  formControlName="project" >
+          <!-- <select formControlname="category">
+              <option [ngValue]="null" disabled>Select </option>
+              <option *ngFor="let category of categories" [ngValue]="category.title">{{category.title}}</option>
+          </select> -->
+          <br>
+          <button class="btn btn-primary width100 button" type="submit">add Meeting </button>
+          <br>
+      </form>
       <br>
-      <button class="btn btn-primary" type="submit">delet meeting </button>
-  </form>
-</div>
-<h3>FORM DATA</h3>
-<p>{{result | json}}</p>
-<p>{{meeting | json}}</p>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <form [formGroup]="deleteMeetingForm" (ngSubmit)="deleteMeeting()">
+          <p>clients email :</p>
+          <input type="text" id="emailToDelet"  formControlName="email" >
+          <br>
+          <button class="btn btn-primary button width100" type="submit">delet all meetings </button>
+      </form>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <h3>FORM DATA</h3>
+      <p>{{result | json}}</p>
+      <p>{{meeting | json}}</p>
+    </div>
+  </div>
+

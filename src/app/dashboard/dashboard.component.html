@@ -1,28 +1,39 @@
-<button class="btn btn-primary" type="" (click)="showItems()">show Items </button>
-
-<h3>Clients</h3>
-<table>
-    <thead ngClass="">
-        <th>Last name</th>
-        <th>email</th>
-        <th>project</th>
-    </thead>
-    <tr ngClass="" *ngFor="let client of clients">
-        <td>{{client.lname }} </td>
-        <td>{{client["email"]}} </td>
-        <td>{{client.project}} </td>
-    </tr>
-</table>
-<h3>Meetings</h3>
-<table>
-    <thead ngClass="">
-        <th>Date</th>
-        <th>Client</th>
-        <th>project</th>
-    </thead>
-    <tr ngClass="" *ngFor="let meeting of meetings">
-        <td>{{meeting.date! | date:'shortDate'}} </td>
-        <td>{{meeting.client.email!}} </td>
-        <td>{{meeting.project!}} </td>
-    </tr>
-</table>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary width100 button" type="" (click)="showItems()">show Items </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <h3>Clients</h3>
+      <table>
+          <thead ngClass="">
+              <th>Last name</th>
+              <th>email</th>
+              <th>project</th>
+          </thead>
+          <tr ngClass="" *ngFor="let client of clients">
+              <td>{{client.lname }} </td>
+              <td>{{client["email"]}} </td>
+              <td>{{client.project}} </td>
+          </tr>
+      </table>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <h3>Meetings</h3>
+      <table>
+          <thead ngClass="">
+              <th>Date</th>
+              <th>Client</th>
+              <th>project</th>
+          </thead>
+          <tr ngClass="" *ngFor="let meeting of meetings">
+              <td>{{meeting.date! | date:'longDate'}} </td>
+              <td>{{meeting.client.email!}} </td>
+              <td>{{meeting.project!}} </td>
+          </tr>
+      </table>
+    </div>
+  </div>
+</div>
