@@ -21,7 +21,7 @@
         <th>project</th>
     </thead>
     <tr ngClass="" *ngFor="let meeting of meetings">
-        <td>{{meeting.date! }} </td>
+        <td>{{meeting.date! | date:'shortDate'}} </td>
         <td>{{meeting.client.email!}} </td>
         <td>{{meeting.project!}} </td>
     </tr>

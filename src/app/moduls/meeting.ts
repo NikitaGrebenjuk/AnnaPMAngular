@@ -77,7 +77,7 @@ export class Meeting{
               return true;
           } else {
               alert("no meeting was created");
-          }    
+          }
       }
       return false;
   }

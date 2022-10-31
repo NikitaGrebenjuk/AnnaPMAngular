@@ -20,7 +20,7 @@ export class MangeClientsComponent implements OnInit {
   deletClientForm = new FormGroup({
     email: new FormControl("max@mustermann.de")
   } );
- 
+
 
   result : object = {};
   client : Object = {};
@@ -29,7 +29,7 @@ export class MangeClientsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
   addClients():void{
     var client = new Client(
       this.clientsForm.value.fname!,
@@ -38,21 +38,26 @@ export class MangeClientsComponent implements OnInit {
       this.clientsForm.value.phone!,
       this.clientsForm.value.project!
     );
-    if(client.validateClient()){
+    if(client.validateClient() && !client.emailExists() && client.checkEmail()){
+      alert("client saved");
       this.result = client;
       window.localStorage.setItem(client.email,JSON.stringify(client));
     }
   }
 
   deletClient():void{
-    var client = JSON.parse(window.localStorage.getItem(this.deletClientForm.value.email!)!);
-    this.client = new Client(client.fname,client.lname,client.email,client.phone,client.project);
-    alert(this.client);    
-    if(window.localStorage.getItem("meeting " + client.lname)!){
-      alert("There is meeting with this client. Please cancel it first.")
-    } else {
-      window.localStorage.removeItem(client.email);
-      alert("client removed")
-    } 
+    var email = this.deletClientForm.value.email!;
+    if(Client.emailExists(email)){
+      var client = JSON.parse(window.localStorage.getItem(this.deletClientForm.value.email!)!);
+      this.client = new Client(client.fname,client.lname,client.email,client.phone,client.project);
+      if(window.localStorage.getItem("meeting " + client.email)!){
+        alert("There is meeting with this client. Please cancel it first.")
+      } else {
+        window.localStorage.removeItem(client.email);
+        alert("client removed")
+      }
+    } else{
+      alert("no client with given Email");
+    }
   }
 }

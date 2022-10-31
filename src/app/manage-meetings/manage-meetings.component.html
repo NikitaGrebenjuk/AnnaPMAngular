@@ -1,5 +1,5 @@
 <h3>reactive Form for Meetings</h3>
-<div >
+<div class="float-start">
     <form [formGroup]="meetingsForm" (ngSubmit)="addMeeting()">
         <p>meetings date:</p>
         <input type="date" id="meetingDate"  formControlName="date" >
@@ -11,7 +11,7 @@
         <input type="datetime" id="meetingEtime"  formControlName="etime" >
         <br>
         <p>meetings client´s email:</p>
-        <input type="text" id="meetingClient"  formControlName="client" >
+        <input type="text" id="meetingClient"  formControlName="email" >
         <br>
         <p>realated Project:</p>
         <input type="text" id="meetingProject"  formControlName="project" >
@@ -25,6 +25,14 @@
     </form>
     <br>
 </div>
-
+<div class="float-end">
+  <form [formGroup]="deleteMeetingForm" (ngSubmit)="deleteMeeting()">
+      <p>clients email :</p>
+      <input type="text" id="emailToDelet"  formControlName="email" >
+      <br>
+      <button class="btn btn-primary" type="submit">delet meeting </button>
+  </form>
+</div>
 <h3>FORM DATA</h3>
 <p>{{result | json}}</p>
+<p>{{meeting | json}}</p>

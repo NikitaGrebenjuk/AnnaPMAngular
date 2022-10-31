@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-body{
+/* body{
     padding: 5% 10%;
     background-color: #EDEDED;
 }
@@ -54,7 +54,7 @@ td, th{
 .buttons:hover {
     background-color: #FF8787;
     color: #EDEDED;
-}
+} */
 
 .buttons {
     background-color: #E26868;

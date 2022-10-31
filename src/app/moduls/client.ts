@@ -36,9 +36,9 @@ export class Client{
           }
   }
 
-  checkEmail(emailToCheck:string) {
+  checkEmail():boolean{
       let validRegEx =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-      if (emailToCheck.match(validRegEx) != null) {
+      if (this.email.match(validRegEx) != null) {
           return true;
       } else{
           alert("email invalid");
@@ -46,24 +46,35 @@ export class Client{
       }
   }
 
-  emailExists(email:string) {
-      if ((window.localStorage.getItem(email)?true:false)){
-          alert("Email: " + email + " exists");
+  emailExists():boolean{
+        if ((window.localStorage.getItem(this.email)?true:false)){
+            alert("Email: " + this.email + " exists");
+            return true;
+        } else{
+          alert("email does not exist: " + this.email);
           return false;
-      } else{
-          return true;
-      }
+        }
+  }
+
+  public static emailExists(email:string):boolean{
+    if ((window.localStorage.getItem(email)?true:false)){
+      alert("Email: " + email + " exists");
+      return true;
+  } else{
+    alert("email does not exist: " + email);
+    return false;
+  }
+
   }
 
   validateClient(): boolean {
       if(this.validateInput()){ // checking if requierd inputs are not empty
-          if(this.checkEmail(this.email) && this.emailExists(this.email) && this.checkNumbers(this.fname) && this.checkNumbers(this.lname)){
-//              window.localStorage.setItem(this.email,JSON.stringify(this));
-//              alert("client created: " +JSON.stringify(this));
+          if(this.checkEmail() && this.checkNumbers(this.fname) && this.checkNumbers(this.lname)){
+            alert("valid client")
             return true;
-          } 
+          }
       }
-      alert("no client created");
+      alert("not valid client");
       return false;
   }
 }
